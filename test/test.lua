@@ -13,15 +13,18 @@ package.path = "../src/?.lua;'" .. package.path
 require "SeaBattle"
 
 -- addon setup
-BS.name = "testName"
-BS.realm = "testRealm"
-BS.faction = "Alliance"
+SB.name = "testName"
+SB.realm = "testRealm"
+SB.faction = "Alliance"
 
 function test.before()
 end
 function test.after()
 end
-function test.Test1()
+function test.test_Test1()
+	val = 1
+	val = bit.lshift(val, 2)
+	print(val)
 end
 
 test.run()
