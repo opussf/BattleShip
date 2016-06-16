@@ -1,0 +1,17 @@
+https://ariejan.net/2009/10/26/how-to-create-and-apply-a-patch-with-git/
+
+reate a patch:
+	git format-patch master --stdout > file.patch
+
+Copy the file
+
+Apply the patch:
+Get stats for applying the patch
+	git apply --stat file.patch
+
+Check the patch
+	git apply --check file.patch
+
+Apply the patch (with signoff)
+	git am --signoff < file.patch
+

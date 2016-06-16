@@ -1,4 +1,4 @@
-<project name="BattleShip" default="package">
+<project name="SeaBattle" default="package">
 
 	<tstamp/>
 	<property file="build.properties"/>
