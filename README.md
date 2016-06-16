@@ -110,11 +110,22 @@ Total = 50 integers
 Non-bit compressed:
 
 direction = 0 = north, 90 = east, 180 = south, 270 = west  (facing)
-player1Ships = { carrier: { x, y, direction }, Battleship: {x,y,dir}, .....}
-player2Ships = Same
+x,y = stern of ship
+ShipMap = { carrier: {p1x, p1y, p1dir, p2x, p2y, p2dir}, Battleship: {p1x, p1y, p1dir, p2x, p2y, p2dir}, ...}
+FireMap = { {p1x,p1y,p2x,p2y}, {1,1,1,1}, {2,2,0,0}, }
 
-player1FireMap = { {x,y}, {x,y},...}
-player2FireMap = { {x,y}, {x,y},...}
+-------------------
+Game meta data:
+Player1.realm
+Player1.name
+Player1.lastMoveDT
+Player2.realm
+Player2.name
+Player2.lastMoveDT
+(Player1 always goes first, lowest lastMoveDT denotes next player)
+if a lastMoveDT > 90 days old, expire game
 
+Player meta data:
+{ realm-name: { realm-name: {win,loss}, }
 
 
