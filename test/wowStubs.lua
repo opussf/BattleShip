@@ -131,6 +131,41 @@ min = math.min
 random = math.random
 tinsert = table.insert
 
+bit = {}
+function bit.lshift( x, by )
+	return x * 2 ^ by
+end
+function bit.rshift( x, by )
+	return math.floor( x / 2 ^ by )
+end
+function bit.bor( a, b )  -- bitwise or
+	local p,c=1,0
+	while a+b>0 do
+		local ra,rb=a%2,b%2
+		if ra+rb>0 then c=c+p end
+		a,b,p=(a-ra)/2,(b-rb)/2,p*2
+	end
+	return c
+end
+function bit.band( a, b ) -- bitwise and
+	local p,c=1,0
+	while a>0 and b>0 do
+		local ra,rb=a%2,b%2
+		if ra+rb>1 then c=c+p end
+		a,b,p=(a-ra)/2,(b-rb)/2,p*2
+	end
+	return c
+end
+function bit.bnot( n )  -- bitwise not
+	local p,c=1,0
+	while n>0 do
+		local r=n%2
+		if r<1 then c=c+p end
+		n,p=(n-r)/2,p*2
+	end
+	return c
+end
+
 -- WOW's functions
 function getglobal( globalStr )
 	-- set the globals table to return what is needed from the 'globals'
