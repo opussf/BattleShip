@@ -18,13 +18,25 @@ SB.realm = "testRealm"
 SB.faction = "Alliance"
 
 function test.before()
+	SB.OnLoad()
 end
 function test.after()
 end
-function test.test_Test1()
-	val = 1
-	val = bit.lshift(val, 2)
-	print(val)
+function test.test_HasSB_Data()
+	assertTrue( SB_Data )
 end
+function test.test_HasSB_Options()
+	assertTrue( SB_Options )
+end
+function test.test_HasSlashCommand()
+	assertTrue( SLASH_SEABATTLE1 )
+end
+function test.test_HasSlashCommand2()
+	assertTrue( SLASH_SEABATTLE2 )
+end
+function test.test_HasCommandFunctionListed()
+	assertTrue( SlashCmdList["SEABATTLE"] )
+end
+
 
 test.run()

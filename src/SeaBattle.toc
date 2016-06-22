@@ -1,10 +1,10 @@
 ## Interface: @INTERFACE@
-## Title: BattleShip
-## Notes: Play BattleShip with a friend or other @VERSION@
+## Title: SeaBattle
+## Notes: Play SeaBattle with a friend or other @VERSION@
 ## Author: sistersally of hyjal
 ## Version: @VERSION@
-## Description: Play BattleShip
-## SavedVariables: BS_Options
+## Description: Play SeaBattle
+## SavedVariables: SB_Options SB_Data
 ## SavedVariablesPerCharacter:
-BattleShip.lua
-BattleShip.xml
+SeaBattle.lua
+SeaBattle.xml
