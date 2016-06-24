@@ -34,6 +34,9 @@ onCursor = {}
 -- onCursor["from"] = picked up from -- Should have enough info to effect an item swap "myInventory | myGear"
 globals = {}
 accountExpansionLevel = 4   -- 0 to 5
+-- registeredPrefixes - populated by the RegisterAddonMessagePrefix( prefix )
+
+registeredPrefixes = {}
 
 SlotListMap={ "HeadSlot","NeckSlot","ShoulderSlot","ShirtSlot","ChestSlot","WaistSlot","LegsSlot",
 		"FeetSlot", "WristSlot", "HandsSlot", "Finger0Slot","Finger1Slot","Trinket0Slot","Trinket1Slot",
@@ -832,6 +835,7 @@ function RegisterAddonMessagePrefix( prefix )
 	-- returns success (512 limit)
 	-- prefix can be up to 16 characters
 	-- Cannot be empty.
+
 end
 function SecondsToTime( secondsIn, noSeconds, notAbbreviated, maxCount )
 	-- http://www.wowwiki.com/API_SecondsToTime
