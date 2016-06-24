@@ -19,17 +19,17 @@ Ships used:
 4 Cruiser: 3
 5 PT: 2
 
-    0  1  2  3  4  5  6  7  8  9
-A|
-B|
-C|
-D|
-E|
-F|
-G|
-H|
-I|
-J|
+    A  B  C  D  E  F  G  H  I  J
+0|
+1|
+2|
+3|
+4|
+5|
+6|
+7|
+8|
+9|
 
 ====
 Note:  Lua is 32 bit
@@ -51,6 +51,7 @@ Each grid has a value:
 1 bit:  Direction (0 = down or right, 1 = up or left)
 1 bit:  Fired on (1 or 0)
 
+```
     16 8 4 2 1
  8   0 0 1 1 0   - Carrier (reverse), not hit
  5   0 0 1 0 1   - Carrier, hit
@@ -58,6 +59,7 @@ Each grid has a value:
 22   1 0 1 1 0   - PT (reverse), not hit
  0   0 0 0 0 0   - Empty, not hit
  1   0 0 0 0 1   - Empty, hit
+```
 
 Values are 0 - 31 (x00 - x17) - up to a possible 7 ships
 
@@ -77,10 +79,12 @@ The 'target' map for each player can be extracted from the 'ship' map from the o
 3 bits: Type of ship in that grid, or 0 (0 - 5)
 1 bit : Direction (0 = down or right, 1 = up or left)
 
+```
     8 4 2 1
  2  0 0 1 0    - Carrier
 11  1 0 1 1    - PT - reverse
  6  0 1 1 0    - Sub
+```
 
  4 bits per coordinate
  8 columns = 32 bits
@@ -94,11 +98,13 @@ Fire map:
 each grid has a value
 2 bits: player2 fired, player1 fired
 
+```
     2 1
  0  0 0  - No fire
  1  0 1  - player 1 fired
  2  1 0  - player 2 fired
  3  1 1  - both fired
+```
 
 2 bits per coordinate
 10 columns = 20 bits = 1 integer
@@ -127,5 +133,49 @@ if a lastMoveDT > 90 days old, expire game
 
 Player meta data:
 { realm-name: { realm-name: {win,loss}, }
+
+
+
+===========================
+# Game play:
+By installing the game, you elect to play.
+
+## New game:
+These steps allow a player to find a new game.
+
+* ```new``` - show players who you are currently not playing with.
+* ```new <playerName-realm>``` - create a new game with that player.
+
+## Play a game:
+These steps let you make moves in games.
+
+Need to be able to see the games in which you can: make a move, are playing, have just won or lost.
+Also need to be able to choose a game
+
+* ```list``` - show your current games
+	* Sorted by last move, oldest first
+	* ```Your turn - <date> - <playerName-realm>```
+	* ```Their turn - <date> - <playerName-realm>```
+	* ```You win - <date> - <playerName-realm>```
+	* ```You lose - <date> - <playerName-realm>```
+* ```play <playerName-realm>``` - play the game against <playerName-realm>
+*
+
+# Game actions:
+The game needs to find new players, and communicate game moves with others that have the app.
+Communication between players will use the SendAddonMessage(), so the idea is to broadcast from time to time that one has the game, and then direct commincation can be used to exchange info.
+
+## Events to watch
+### Guild
+
+* PLAYER_GUILD_UPDATE
+* GUILD_ROSTER_UPDATE
+
+### Party
+
+* PARTY_MEMBERS_CHANGED
+	* Only send a ping on new party members
+
+
 
 

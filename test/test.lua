@@ -7,6 +7,7 @@ require "wowTest"
 
 test.outFileName = "testOut.xml"
 
+SB_Frame = CreateFrame()
 
 -- require the file to test
 package.path = "../src/?.lua;'" .. package.path
