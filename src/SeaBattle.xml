@@ -9,6 +9,9 @@ xsi:schemaLocation="http://www.blizzard.com/wow/ui/
 				SB.OnLoad();
 				self:Hide();
 			</OnLoad>
+			<OnUpdate>
+				SB.OnUpdate(arg1);
+			</OnUpdate>
 			<OnEvent>
 				SB[event](self, ...)
 			</OnEvent>

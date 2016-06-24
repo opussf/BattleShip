@@ -827,6 +827,12 @@ function PutItemInBag( bagNum )
 	end
 	onCursor = {}
 end
+function RegisterAddonMessagePrefix( prefix )
+	-- http://wowprogramming.com/docs/api/RegisterAddonMessagePrefix
+	-- returns success (512 limit)
+	-- prefix can be up to 16 characters
+	-- Cannot be empty.
+end
 function SecondsToTime( secondsIn, noSeconds, notAbbreviated, maxCount )
 	-- http://www.wowwiki.com/API_SecondsToTime
 	-- formats seconds to a readable time
@@ -866,6 +872,20 @@ function SecondsToTime( secondsIn, noSeconds, notAbbreviated, maxCount )
 		end
 	end
 	return( table.concat( outArray, " " ) )
+end
+function SendAddonMessage( prefix, text, type, target )
+	-- http://wowwiki.wikia.com/wiki/API_SendAddonMessage
+	-- Fires CHAT_MSG_ADDON event
+		-- Sends these args with the event:
+		-- Arg1: prefix
+		-- Arg2: message
+		-- Arg3: distribution
+		-- Arg4: sender
+		-- Need to register the addon prefix with RegisterAddonMessagePrefix
+	-- type is in "PARTY", "RAID", "GUILD", "OFFICER", "BATTLEGROUND", "WHISPER"
+	-- length of prefix and text cannot exceed 254 characters.
+	-- \t cannot be used in the prefix
+	-- all characters 1-255 can be used (no NULL)
 end
 function SendChatMessage( msg, chatType, language, channel )
 	-- http://www.wowwiki.com/API_SendChatMessage
