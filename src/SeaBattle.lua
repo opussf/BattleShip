@@ -15,6 +15,7 @@ COLOR_NEON_BLUE = "|cff4d4dff";
 COLOR_END = "|r";
 
 SB = {}
+SB.Prefix = "SeaBattle"
 SB_Data = {}
 SB_Options = {}
 
@@ -24,6 +25,7 @@ function SB.OnLoad()
 	SlashCmdList["SEABATTLE"] = function( msg ) SB.Command( msg ); end
 
 	SB_Frame:RegisterEvent("ADDON_LOADED")
+	RegisterAddonMessagePrefix( SB.Prefix )
 end
 function SB.ADDON_LOADED()
 	SB.name = UnitName("player")
@@ -37,6 +39,7 @@ function SB.ADDON_LOADED()
 	SB_Data.Players[SB.nr] = {}
 
 	SB.Print("Loaded")
+	SB_Frame:UnregisterEvent("ADDON_LOADED")
 end
 function SB.GUILD_ROSTER_UPDATE( whatAmI )
 end
