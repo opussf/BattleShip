@@ -40,12 +40,12 @@ function test.test_HasCommandFunctionListed()
 	assertTrue( SlashCmdList["SEABATTLE"] )
 end
 function test.test_HasCommand()
-	SB.Command()
+	SB.Command("")
 end
 function test.test_HasCommandHelp()
 	SB.Command("help")
 end
-function test.test_HasCommandNew()
+function test.test_Command_New_NoOtherPlayers()
 	SB.Command("new")
 end
 function test.test_RegisterSelf()
@@ -61,5 +61,6 @@ end
 function test.test_Event_CHAT_MSG_ADDON()
 	SB.CHAT_MSG_ADDON( prefix, message, distribution, sender )
 end
+
 
 test.run()

@@ -835,7 +835,7 @@ function RegisterAddonMessagePrefix( prefix )
 	-- returns success (512 limit)
 	-- prefix can be up to 16 characters
 	-- Cannot be empty.
-
+	-- What does this do?  In a bigger system, it could allow random messages to be generated
 end
 function SecondsToTime( secondsIn, noSeconds, notAbbreviated, maxCount )
 	-- http://www.wowwiki.com/API_SecondsToTime
