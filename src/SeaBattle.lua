@@ -26,18 +26,35 @@ function SB.OnLoad()
 	SB_Frame:RegisterEvent("ADDON_LOADED")
 end
 function SB.ADDON_LOADED()
+	SB.name = UnitName("player")
+	SB.realm = GetRealmName()
+	SB.faction = UnitFactionGroup("player")
+	SB.nr = SB.name.."-"..SB.realm
+
+	if not SB_Data["Players"] then
+		SB_Data["Players"] = {}
+	end
+	SB_Data.Players[SB.nr] = {}
+
+	SB.Print("Loaded")
 end
-function SB.Command( msg )
+function SB.GUILD_ROSTER_UPDATE( whatAmI )
 end
---[[
-function GoldRate.Print( msg, showName)
+function SB.CHAT_MSG_ADDON( prefix, message, distribution, sender )
+end
+------------
+function SB.Print( msg, showName)
 	-- print to the chat frame
 	-- set showName to false to suppress the addon name printing
 	if (showName == nil) or (showName) then
-		msg = COLOR_PURPLE..GOLDRATE_MSG_ADDONNAME.."> "..COLOR_END..msg
+		msg = COLOR_ORANGE..SB_MSG_ADDONNAME.."> "..COLOR_END..msg
 	end
 	DEFAULT_CHAT_FRAME:AddMessage( msg )
 end
+
+function SB.Command( msg )
+end
+--[[
 function GoldRate.GuildPrint( msg )
 	if (IsInGuild()) then
 		guildName, guildRankName, guildRankIndex = GetGuildInfo("player")

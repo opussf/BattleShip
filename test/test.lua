@@ -14,12 +14,13 @@ package.path = "../src/?.lua;'" .. package.path
 require "SeaBattle"
 
 -- addon setup
-SB.name = "testName"
+SB.name = "testPlayer"
 SB.realm = "testRealm"
 SB.faction = "Alliance"
 
 function test.before()
 	SB.OnLoad()
+	SB.ADDON_LOADED()
 end
 function test.after()
 end
@@ -46,6 +47,10 @@ function test.test_HasCommandHelp()
 end
 function test.test_HasCommandNew()
 	SB.Command("new")
+end
+function test.test_RegisterSelf()
+	assertTrue( SB_Data )
+	assertTrue( SB_Data.Players["testPlayer-testRealm"] )
 end
 function test.test_Event_GUILD_ROSTER_UPDATE_true()
 	SB.GUILD_ROSTER_UPDATE( true )
