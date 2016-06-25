@@ -54,9 +54,86 @@ function SB.Print( msg, showName)
 	end
 	DEFAULT_CHAT_FRAME:AddMessage( msg )
 end
-
-function SB.Command( msg )
+function SB.PrintHelp()
+	SB.Print(SB_MSG_ADDONNAME.." by "..SB_MSG_AUTHOR);
+	for cmd, info in pairs(SB.CommandList) do
+		SB.Print(string.format("%s %s %s -> %s",
+			SLASH_SEABATTLE2, cmd, info.help[1], info.help[2]));
+	end
 end
+SB.CommandList = {
+	["help"] = {
+		["func"] = SB.PrintHelp,
+		["help"] = {"","Print this help."},
+	},
+}
+function SB.Command( msg )
+	local cmd, param = SB.ParseCmd( msg )
+	cmd = string.lower( cmd )
+	local cmdFunc = SB.CommandList[cmd]
+	if cmdFunc then
+		cmdFunc.func( param )
+	else
+		SB.CommandList.help.func()
+	end
+end
+function SB.ParseCmd( msg )
+	if msg then
+		local a,b,c = strfind( msg, "(%S+)" )
+		if a then
+			return c, strsub( msg, b+2 )
+		else
+			return ""
+		end
+	end
+end
+
+--[[
+
+function RF.Command(msg)
+	local cmd, param = RF.ParseCmd(msg);
+	cmd = string.lower(cmd);
+	local cmdFunc = RF.CommandList[cmd];
+	if cmdFunc then
+		cmdFunc.func(param);
+	else
+		InterfaceOptionsFrame_OpenToCategory("Random Fortune");
+		--RF.Print("Use '/rf help' for a list of commands.");
+	end
+end
+
+
+
+
+
+
+RF.CommandList = {
+	["help"] = {
+		["func"] = RF.PrintHelp,
+		["help"] = {"","Print this help."},
+	},
+}
+function SB.Command( msg )
+	local cmd, param = INEED.parseCmd(msg);
+	--INEED.Print("cl:"..cmd.." p:"..(param or "nil") )
+	local cmdFunc = INEED.CommandList[cmd];
+	if cmdFunc then
+		cmdFunc.func(param);
+	elseif ( cmd and cmd ~= "") then  -- exists and not empty
+		--INEED.Print("cl:"..cmd.." p:"..(param or "nil"))
+		--param, targetString = INEED.parseTarget( param )
+		INEED.addItem( cmd, tonumber(param) )
+		INEED.makeOthersNeed()
+		--
+		--if targetString then
+		--	INEED.addTarget( cmd, tonumber(param), targetString )
+		--end
+		--InterfaceOptionsFrame_OpenToCategory(FB_MSG_ADDONNAME);
+	else
+		INEED.PrintHelp()
+	end
+end
+]]
 --[[
 function GoldRate.GuildPrint( msg )
 	if (IsInGuild()) then
