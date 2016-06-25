@@ -159,7 +159,7 @@ Also need to be able to choose a game
 	* ```You win - <date> - <playerName-realm>```
 	* ```You lose - <date> - <playerName-realm>```
 * ```play <playerName-realm>``` - play the game against <playerName-realm>
-*
+* ```show <playerName-realm>``` - show this game
 
 # Game actions:
 The game needs to find new players, and communicate game moves with others that have the app.

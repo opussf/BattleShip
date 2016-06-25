@@ -47,6 +47,10 @@ end
 function test.test_HasCommandNew()
 	SB.Command("new")
 end
+function test.test_RegisterSelf()
+	assertTrue( SB_Data )
+
+end
 function test.test_Event_GUILD_ROSTER_UPDATE_true()
 	SB.GUILD_ROSTER_UPDATE( true )
 end
