@@ -38,6 +38,23 @@ end
 function test.test_HasCommandFunctionListed()
 	assertTrue( SlashCmdList["SEABATTLE"] )
 end
-
+function test.test_HasCommand()
+	SB.Command()
+end
+function test.test_HasCommandHelp()
+	SB.Command("help")
+end
+function test.test_HasCommandNew()
+	SB.Command("new")
+end
+function test.test_Event_GUILD_ROSTER_UPDATE_true()
+	SB.GUILD_ROSTER_UPDATE( true )
+end
+function test.test_Event_GUILD_ROSTER_UPDATE_false()
+	SB.GUILD_ROSTER_UPDATE( false )
+end
+function test.test_Event_CHAT_MSG_ADDON()
+	SB.CHAT_MSG_ADDON( prefix, message, distribution, sender )
+end
 
 test.run()
