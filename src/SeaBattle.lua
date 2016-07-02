@@ -47,7 +47,8 @@ function SB.CHAT_MSG_ADDON( prefix, message, distribution, sender )
 end
 ------------
 function SB.NewGame( playerTag )
-
+	for tag, data in pairs(SB_Data) do
+	end
 	return "Hello"
 end
 ------------
