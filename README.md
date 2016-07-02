@@ -72,6 +72,13 @@ The 'target' map for each player can be extracted from the 'ship' map from the o
 2 integers per row
 10 rows = 20 integers
 2 maps = 40 integers
+----
+better encoding
+5 bits per coordinate
+10x10x2 = 200 coordinates
+5 bits * 200 coordinates = 1000 bits
+1000 bits / 32 bits per integer = 31.25 integers (32 integers)
+
 
 -------------------
 "ship map"
