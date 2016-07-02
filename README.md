@@ -134,7 +134,7 @@ if a lastMoveDT > 90 days old, expire game
 Player meta data:
 SB_Date = { }
 
-{ realm-name: { realm-name: {win,loss}, }
+{ realm-name: { realm-name: {win,loss,game}, }
 
 
 #####
