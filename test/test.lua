@@ -61,6 +61,10 @@ end
 function test.test_Event_CHAT_MSG_ADDON()
 	SB.CHAT_MSG_ADDON( prefix, message, distribution, sender )
 end
+function test.test_ShowPossibleNewOpponent_ThisRealm()
+	SB_Data.Players["otherPlayer-testRealm"]= {}
+	assertEquals( "otherPlayer-testRealm", SB.newGame() )
+end
 
 
 test.run()
