@@ -46,6 +46,11 @@ end
 function SB.CHAT_MSG_ADDON( prefix, message, distribution, sender )
 end
 ------------
+function SB.NewGame( playerTag )
+
+	return "Hello"
+end
+------------
 function SB.Print( msg, showName)
 	-- print to the chat frame
 	-- set showName to false to suppress the addon name printing
@@ -61,18 +66,13 @@ function SB.PrintHelp()
 			SLASH_SEABATTLE1, cmd, info.help[1], info.help[2]));
 	end
 end
-SB.CommandList = {
-	["help"] = {
-		["func"] = SB.PrintHelp,
-		["help"] = {"","Print this help."},
-	},
-}
+
 function SB.Command( msg )
 	local cmd, param = SB.ParseCmd( msg )
 	cmd = string.lower( cmd )
 	local cmdFunc = SB.CommandList[cmd]
 	if cmdFunc then
-		cmdFunc.func( param )
+		return cmdFunc.func( param )
 	else
 		SB.CommandList.help.func()
 	end
@@ -87,4 +87,14 @@ function SB.ParseCmd( msg )
 		end
 	end
 end
-
+------------
+SB.CommandList = {
+	["help"] = {
+		["func"] = SB.PrintHelp,
+		["help"] = {"","Print this help."},
+	},
+	["new"] = {
+		["func"] = SB.NewGame,
+		["help"] = {"<playerTag>","Show available players, start a new game."},
+	},
+}
