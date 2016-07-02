@@ -20,8 +20,8 @@ SB_Data = {}
 SB_Options = {}
 
 function SB.OnLoad()
-	SLASH_SEABATTLE1 = "/SeaBattle"
-	SLASH_SEABATTLE2 = "/SB"
+	SLASH_SEABATTLE1 = "/SB"
+	SLASH_SEABATTLE2 = "/SeaBattle"
 	SlashCmdList["SEABATTLE"] = function( msg ) SB.Command( msg ); end
 
 	SB_Frame:RegisterEvent("ADDON_LOADED")
@@ -38,7 +38,7 @@ function SB.ADDON_LOADED()
 	end
 	SB_Data.Players[SB.nr] = {}
 
-	SB.Print("Loaded")
+	--SB.Print("Loaded")
 	SB_Frame:UnregisterEvent("ADDON_LOADED")
 end
 function SB.GUILD_ROSTER_UPDATE( whatAmI )
@@ -58,7 +58,7 @@ function SB.PrintHelp()
 	SB.Print(SB_MSG_ADDONNAME.." by "..SB_MSG_AUTHOR);
 	for cmd, info in pairs(SB.CommandList) do
 		SB.Print(string.format("%s %s %s -> %s",
-			SLASH_SEABATTLE2, cmd, info.help[1], info.help[2]));
+			SLASH_SEABATTLE1, cmd, info.help[1], info.help[2]));
 	end
 end
 SB.CommandList = {
