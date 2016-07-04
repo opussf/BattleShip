@@ -47,9 +47,29 @@ function SB.CHAT_MSG_ADDON( prefix, message, distribution, sender )
 end
 ------------
 function SB.NewGame( playerTag )
-	for tag, data in pairs(SB_Data) do
+	-- looks for known players to start a game with.
+	-- Ignore those you already have a game with.
+	-- Ignore yourself.
+	-- Calls SB.InitGame to Init a game
+
+	-- @Param (optional) playerTag = who to try to create a new game with
+	-- @Returns List of possible players
+
+	local playerList = {}
+	for tag, data in pairs(SB_Data.Players) do
+		--print( tag )
+		if tag ~= SB.nr and not data.game then  -- not you, and no known game
+			table.insert( playerList, tag )
+			--print("++++")
+			if playerTag and playerTag == tag then  -- want to start a game tith playerTag
+				SB.InitGame( playerTag )
+			end
+		end
 	end
-	return "Hello"
+
+	if #playerList >= 1 then
+		return playerList
+	end
 end
 ------------
 function SB.Print( msg, showName)

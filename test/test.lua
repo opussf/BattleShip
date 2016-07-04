@@ -23,6 +23,7 @@ function test.before()
 	SB.ADDON_LOADED()
 end
 function test.after()
+	SB_Data = {}
 end
 function test.test_HasSB_Data()
 	assertTrue( SB_Data )
@@ -62,16 +63,16 @@ function test.test_Event_CHAT_MSG_ADDON()
 	SB.CHAT_MSG_ADDON( prefix, message, distribution, sender )
 end
 function test.test_ShowPossibleNewOpponent_NoOpponentsKnown()
-	assertEquals( nil, SB.Command("new") )
+
+	assertIsNil( SB.Command("new") )
 end
 function test.test_ShowPossibleNewOpponent_ThisRealm()
 	SB_Data.Players["otherPlayer-testRealm"]= {}
-	assertEquals( "otherPlayer-testRealm", SB.Command("new") )
+	assertEquals( "otherPlayer-testRealm", SB.Command("new")[1] )
 end
 function test.test_ShowPossibleNewOpponent_ThisRealm_HasGame()
-	SB_Data.Players["otherPlayer-testRealm"] = { game={} }
-	assertEquals
+	SB_Data.Players["otherPlayer-testRealm"] = { ["game"]={} }
+	assertIsNil( SB.Command("new") )
 end
-
 
 test.run()
