@@ -63,7 +63,6 @@ function test.test_Event_CHAT_MSG_ADDON()
 	SB.CHAT_MSG_ADDON( prefix, message, distribution, sender )
 end
 function test.test_ShowPossibleNewOpponent_NoOpponentsKnown()
-
 	assertIsNil( SB.Command("new") )
 end
 function test.test_ShowPossibleNewOpponent_ThisRealm()
@@ -73,6 +72,17 @@ end
 function test.test_ShowPossibleNewOpponent_ThisRealm_HasGame()
 	SB_Data.Players["otherPlayer-testRealm"] = { ["game"]={} }
 	assertIsNil( SB.Command("new") )
+end
+function test.test_StartAGame_ValidPlayer()
+	SB_Data.Players["otherPlayer-testRealm"]= {}
+	assertEquals( "otherPlayer-testRealm", SB.Command( "new otherPlayer-testRealm" ) )
+end
+function test.test_StartAGame_InvalidPlayer_nonExistant()
+	assertIsNil( SB.Command( "new otherPlayer-testRealm" ) )
+end
+function test.test_StartAGame_InvalidPlayer_hasGame()
+	SB_Data.Players["otherPlayer-testRealm"] = { ["game"]={} }
+	assertIsNil( SB.Command( "new otherPlayer-testRealm" ) )
 end
 
 test.run()
