@@ -66,8 +66,11 @@ function SB.NewGame( playerTag )
 			end
 		end
 	end
-
 	if #playerList >= 1 then
+		SB.Print( "Possible opponents:", false )
+		for _,tag in ipairs( playerList ) do
+			SB.Print( "  "..tag, false )
+		end
 		return playerList
 	end
 end
