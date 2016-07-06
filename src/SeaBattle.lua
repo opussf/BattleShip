@@ -53,7 +53,7 @@ function SB.NewGame( playerTag )
 	-- Calls SB.InitGame to Init a game
 
 	-- @Param (optional) playerTag = who to try to create a new game with
-	-- @Returns List of possible players
+	-- @Returns List of possible players, nil, or the playerTag for a started game
 
 	local playerList = {}
 	for tag, data in pairs(SB_Data.Players) do
@@ -61,8 +61,8 @@ function SB.NewGame( playerTag )
 		if tag ~= SB.nr and not data.game then  -- not you, and no known game
 			table.insert( playerList, tag )
 			--print("++++")
-			if playerTag and playerTag == tag then  -- want to start a game tith playerTag
-				SB.InitGame( playerTag )
+			if playerTag and playerTag == tag then  -- want to start a game with playerTag
+				return SB.InitGame( playerTag )
 			end
 		end
 	end
@@ -72,6 +72,14 @@ function SB.NewGame( playerTag )
 			SB.Print( "  "..tag, false )
 		end
 		return playerList
+	end
+end
+function SB.InitGame( playerTag )
+	-- inits a game with playerTag
+	-- since this can be called independently, it should double check if the playerTag is known
+	SB.Print( playerTag )
+	if SB_Data.Players[playerTag] and not SB_Data.Players[playerTag].game then
+		-- Exists, and does not have a current game
 	end
 end
 ------------
