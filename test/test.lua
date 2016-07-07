@@ -91,4 +91,5 @@ function test.test_StartAGame_InvalidPlayer_hasGame()
 	assertIsNil( SB.Command( "new otherPlayer-testRealm" ) )
 end
 
+
 test.run()

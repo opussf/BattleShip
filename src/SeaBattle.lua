@@ -83,9 +83,11 @@ function SB.InitGame( playerTag )
 	if SB_Data.Players[playerTag] and not SB_Data.Players[playerTag].game then
 		-- Exists, and does not have a current game
 		SB_Data.Players[playerTag].game = {you = {[0]=0}, them={[0]=0}}
+
 		return playerTag
 	end
 end
+
 ------------
 function SB.Print( msg, showName)
 	-- print to the chat frame
