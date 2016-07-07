@@ -80,7 +80,8 @@ end
 function test.test_StartAGame_ValidPlayer_gameStructure()
 	SB_Data.Players["otherPlayer-testRealm"]= {}
 	SB.Command( "new otherPlayer-testRealm" )
-	assertEquals( {}, SB_Data.Players["otherPlayer-testRealm"].game.you )
+	assertEquals( 0, SB_Data.Players["otherPlayer-testRealm"].game.you[0] )
+	assertEquals( 0, SB_Data.Players["otherPlayer-testRealm"].game.them[0] )
 end
 function test.test_StartAGame_InvalidPlayer_nonExistant()
 	assertIsNil( SB.Command( "new otherPlayer-testRealm" ) )

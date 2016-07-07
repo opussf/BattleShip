@@ -77,9 +77,13 @@ end
 function SB.InitGame( playerTag )
 	-- inits a game with playerTag
 	-- since this can be called independently, it should double check if the playerTag is known
-	SB.Print( playerTag )
+	-- @Parm (required) playerTag
+	-- @Returns the playerTag on success, nil on failure
+	--SB.Print( playerTag )
 	if SB_Data.Players[playerTag] and not SB_Data.Players[playerTag].game then
 		-- Exists, and does not have a current game
+		SB_Data.Players[playerTag].game = {you = {[0]=0}, them={[0]=0}}
+		return playerTag
 	end
 end
 ------------

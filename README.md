@@ -143,6 +143,8 @@ SB_Date = { }
 
 { realm-name: { realm-name: {win,loss,game}, }
 
+game = {you = {lastMoveDT, boardinteger, boardinteger,...}, them = {lastMoveDT, boardinteger, boardinteger,...}, }
+
 
 #####
 Block Chain algorythm.
