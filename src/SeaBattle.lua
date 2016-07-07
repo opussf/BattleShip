@@ -83,7 +83,7 @@ function SB.InitGame( playerTag )
 	if SB_Data.Players[playerTag] and not SB_Data.Players[playerTag].game then
 		-- Exists, and does not have a current game
 		SB_Data.Players[playerTag].game = {you = {[0]=0}, them={[0]=0}}
-
+		SB.Print("Game with "..playerTag.." has been created.")
 		return playerTag
 	end
 end
